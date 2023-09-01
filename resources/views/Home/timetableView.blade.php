@@ -1,6 +1,7 @@
 @extends('layouts.home')
 @section('title','view Timetable')
 @section('content')
+@include('sweetalert::alert')
 @if(session()->has('message'))
 <div class="alert alert-success">
     <button type="button" class="close" data-dismiss="alert" arial-hidden="true">x</button>
@@ -29,7 +30,7 @@
         <td>{{$taskAdded->start_time}}</td>
         <td>{{$taskAdded->end_time}}</td>
         <td>{{$taskAdded->duration}} minutes</td>
-        <td> <a  onclick="return confirm('Are you sure you want to delete this plan?')" class="btn btn-danger" href="{{route('deleteTask',$taskAdded->id)}}" style="margin:0 1em">Delete</a></td>
+        <td> <a onclick="confirmation(event)"  class="btn btn-danger" href="{{route('deleteTask',$taskAdded->id)}}" style="margin:0 1em">Delete</a></td>
         </tr>
         @endforeach
 

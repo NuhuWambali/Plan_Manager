@@ -1,6 +1,7 @@
 @extends('layouts.home')
 @section('title','createTimetable')
 @section('content')
+@include('sweetalert::alert')
 @if(session()->has('message'))
 <div class="alert alert-success">
     <button type="button" class="close" data-dismiss="alert" arial-hidden="true">x</button>

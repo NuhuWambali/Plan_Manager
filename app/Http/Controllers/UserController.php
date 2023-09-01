@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\{Plan,timeTableTask};
 
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -48,7 +49,9 @@ class UserController extends Controller
         $plan->place=$request->place;
         $plan->user_id=$user->id;
         $plan->save();
-        return redirect()->back()->with('message','Plan Added Successfully');
+        Alert::success('Plan Added Successfully','');
+        // ->with('message','Plan Added Successfully');
+        return redirect()->back();
     }
 
     public function today(){
@@ -65,7 +68,6 @@ class UserController extends Controller
 
         $authUser=Auth::user()->id;
         $thisMonthPlan=PLan::where('user_id','=',$authUser)->get();
-
         return view('Home.thisMonth',compact('thisMonthPlan'));
     }
     public function thisYear(){
@@ -93,11 +95,12 @@ class UserController extends Controller
             $timeFinal=round(abs($time2_Minutes-$time1_Minutes));
         $task->duration=$timeFinal/60;
         $task->save();
-        return redirect()->back()->with('message', 'Task Added Succesfully');
+        Alert::success('Task Added Successfully','');
+        return redirect()->back();
+        // with('message', 'Task Added Succesfully');
     }
 
     public function viewTimetable(){
-
             $user=Auth::user()->id;
             $taskAdded=timeTableTask::where('user_id','=',$user)->get();
             return view('Home.timetableView',compact('taskAdded'));
@@ -106,19 +109,25 @@ class UserController extends Controller
     public function deleteTask($id){
         $deleteTask=timeTableTask::find($id);
         $deleteTask->delete();
-        return redirect()->back()->with('message', 'Task Deleted Succesfully');
+        Alert::success('Task Deleted Successfully','');
+        return redirect()->back();
+        // ->with('message', 'Task Deleted Succesfully');
     }
 
     public function deletePlan($id){
         $deletePlan=Plan::find($id);
         $deletePlan->delete();
-        return redirect()->back()->with('message', 'Plan Deleted Successfully');
+        Alert::success('Plan Deleted Successfully','');
+        return redirect()->back();
+        // ->with('message', 'Plan Deleted Successfully');
+        
     }
 
     public function planDone($id){
         $planDone=Plan::find($id);
         $planDone->status="done";
         $planDone->save();
+        Alert::success('Conglatulations!',"You've Completed This Plan");
         return redirect()->back();
     }
 
@@ -136,7 +145,8 @@ class UserController extends Controller
         $plan->place=$request->place;
         $plan->user_id=$user->id;
         $plan->save();
-        return redirect()->back()->with('message','Plan Edited Successfully');
-
+        Alert::success('Plan Edited Successfully','');
+        return redirect()->back();
+        // ->with('message','Plan Edited Successfully');
     }
 }

@@ -1,6 +1,7 @@
 @extends('layouts.home')
 @section('title','editPlan')
 @section('content')
+@include('sweetalert::alert')
 @if(session()->has('message'))
 <div class="alert alert-success">
     <button type="button" class="close" data-dismiss="alert" arial-hidden="true">x</button>
@@ -42,7 +43,7 @@
             <option value="This Year">This Year</option>
       </select>
       </div>
-      <button type="submit" class="btn btn-success">Submit</button>
+      <button type="submit" style="color:#fff" class="btn btn-success">Submit</button>
 </div>
 </form>
 @endsection

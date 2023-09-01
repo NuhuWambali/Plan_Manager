@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\{User,Plan};
 use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class customAuth extends Controller
 {
@@ -23,7 +24,9 @@ class customAuth extends Controller
         $data=$request->only('email','password');
         if(Auth::attempt($data)){
 
-          return redirect('/')->with('message',"Welcome to Plan Manager...it's time  for planning your life....!");
+        //   ->with('message',"Welcome to Plan Manager...it's time  for planning your life....!");
+        Alert::success('Loggedin Successfully','Welcome to Plan manager....its time for planning your life');
+        return redirect('/');
         }
         return redirect('/login');
     }
