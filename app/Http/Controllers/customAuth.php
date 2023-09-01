@@ -24,7 +24,6 @@ class customAuth extends Controller
         $data=$request->only('email','password');
         if(Auth::attempt($data)){
 
-        //   ->with('message',"Welcome to Plan Manager...it's time  for planning your life....!");
         Alert::success('Loggedin Successfully','Welcome to Plan manager....its time for planning your life');
         return redirect('/');
         }
@@ -43,7 +42,8 @@ class customAuth extends Controller
         ]);
         $data=$request->all();
         $this->create($data);
-        return redirect('/')->with('message','Successfully Reqistered! PLease Login');
+        Alert::success('Loggedin Successfully','Welcome to Plan manager....its time for planning your life');
+        return redirect('/');
     }
 
     public function create(array $data){
