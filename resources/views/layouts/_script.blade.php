@@ -23,5 +23,3 @@
 <!--Style Switcher -->
 <script src="{{asset('plugins/bower_components/styleswitcher/jQuery.style.switcher.js')}}"></script>
 
-
-

@@ -8,7 +8,15 @@
      {{session()->get('message')}}
 </div>
 @endif
-<h2 class="titlealign">Plan for today</h2>
+<div class="row">
+    <div class="col-10">
+        <h2 class="titlealign">Plan for today</h2>
+    </div>
+    <div class="col-2">
+        <button class="btn btn-success">Download </button>
+    </div>
+</div>
+
 @if($todayPlan->isNotEmpty())
             @foreach($todayPlan as $plan)
             @if($plan->category=='Today')
