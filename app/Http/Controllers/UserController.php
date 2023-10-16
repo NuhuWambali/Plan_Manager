@@ -151,11 +151,24 @@ class UserController extends Controller
     }
 
     public function downloadPlan(){
-        $todayPlans=Plan::all();
-        $todayPlans->category='Today';
+        $Plans=Plan::Where([
+            'category'=>'Today',
+        ])->get();
         $userName=Auth::user()->name;
-        $pdf =  PDF::loadView('Home.downloadPdf',compact('todayPlans','userName'));
+        $pdf =  PDF::loadView('Home.downloadPdf',compact('Plans','userName'));
         $pdf->setPaper('A4', 'portrait');
         return $pdf->download('my_plans.pdf');
     }
+
+    public function downloadPlanThisWeek(){
+        $Plans=Plan::Where([
+            'category'=>'This Week',
+        ])->get();
+        $userName=Auth::user()->name;
+        $pdf =  PDF::loadView('Home.downloadThisWeekPdf',compact('Plans','userName'));
+        $pdf->setPaper('A4', 'portrait');
+        return $pdf->download('this_week_plans.pdf');
+    }
+
+
 }

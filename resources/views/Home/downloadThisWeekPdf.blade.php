@@ -41,12 +41,12 @@
 <body>
 <div class="container">
     <div class="page-header">
-        <h1>Today Plans</h1>
+        <h1>This Week Plans</h1>
     </div>
-    <p style="color:green">Dreams don't work unless you do. - John C. Maxwell</p>
+    <p style="color:green">"The future depends on what you do today." - Mahatma Gandhi</p>
     <div class="content">
 
-        <h4>My Today's plans</h4>
+        <h4>This Week Plans</h4>
         <table>
 
             <thead>
@@ -58,10 +58,10 @@
             </thead>
             <tbody>
             @foreach($Plans as $plan)
-            <tr>
-                <td>{{$plan->plan}}</td>
-                <td>{{$plan->description}}</td>
-            </tr>
+                <tr>
+                    <td>{{$plan->plan}}</td>
+                    <td>{{$plan->description}}</td>
+                </tr>
             </tbody>
             @endforeach
         </table>

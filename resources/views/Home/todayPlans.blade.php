@@ -14,7 +14,7 @@
     </div>
 
     <div class="col-2">
-        <a  href="{{route('downloadPlan')}}" class="btn btn-success">Download</a>
+        <a  href="{{route('downloadPlan')}}" class="btn btn-success">Download Pdf</a>
     </div>
 
 </div>

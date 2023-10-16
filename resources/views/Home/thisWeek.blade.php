@@ -8,7 +8,16 @@
      {{session()->get('message')}}
 </div>
 @endif
-<h2 class="titlealign">Plan for this Week</h2>
+<div class="row">
+    <div class="col-10">
+        <h2 class="titlealign">Plan for today</h2>
+    </div>
+
+    <div class="col-2">
+        <a  href="{{route('downloadPlanThisWeek')}}" class="btn btn-success">Download Pdf</a>
+    </div>
+
+</div>
 @if($thisWeekPlan->isNotEmpty())
             @foreach($thisWeekPlan as $plan)
             @if($plan->category=='This Week')
