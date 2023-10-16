@@ -67,3 +67,5 @@ Route::get('/downloadPlan', [UserController::class, 'downloadPlan'])->name('down
 
 Route::get('/downloadPlanThisWeek', [UserController::class, 'downloadPlanThisWeek'])->name('downloadPlanThisWeek');
 
+Route::get('/downloadPlanThisMonth', [UserController::class, 'downloadPlanThisMonth'])->name('downloadPlanThisMonth');
+
