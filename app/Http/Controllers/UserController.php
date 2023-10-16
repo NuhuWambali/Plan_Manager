@@ -190,6 +190,14 @@ class UserController extends Controller
         return $pdf->download('this_year_plans.pdf');
     }
 
+    public function downloadTimeTable(){
+        $Plans=TimeTableTask::all();
+        $userName=Auth::user()->name;
+        $pdf=PDF::loadView('Home.downloadTimeTable', compact('Plans','userName'));
+        $pdf->setPaper('A4','portrait');
+        return $pdf->download('my_time_table.pdf');
+    }
+
 
 
 

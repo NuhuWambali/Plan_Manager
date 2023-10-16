@@ -10,7 +10,16 @@
 @endif
 
 @if($taskAdded->count())
-<h2 class="titlealign">My Timetable</h2>
+<div class="row">
+    <div class="col-10">
+        <h2 class="titlealign">My Timetable</h2>
+    </div>
+
+    <div class="col-2">
+        <a  href="{{route('downloadTimeTable')}}" class="btn btn-success">Download Pdf</a>
+    </div>
+
+</div>
 <table class="table">
     <thead>
       <tr>

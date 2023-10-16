@@ -71,3 +71,5 @@ Route::get('/downloadPlanThisMonth', [UserController::class, 'downloadPlanThisMo
 
 Route::get('/downloadPlanThisYear', [UserController::class, 'downloadPlanThisYear'])->name('downloadPlanThisYear');
 
+Route::get('/downloadTimeTable', [UserController::class, 'downloadTimeTable'])->name('downloadTimeTable');
+
