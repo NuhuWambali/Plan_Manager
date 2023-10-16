@@ -8,7 +8,16 @@
      {{session()->get('message')}}
 </div>
 @endif
-<h2 class="titlealign">Plan for this Year</h2>
+<div class="row">
+    <div class="col-10">
+        <h2 class="titlealign">Plan for This Year</h2>
+    </div>
+
+    <div class="col-2">
+        <a  href="{{route('downloadPlanThisYear')}}" class="btn btn-success">Download Pdf</a>
+    </div>
+
+</div>
 @if($thisYearPlan->isNotEmpty())
             @foreach($thisYearPlan as $plan)
             @if($plan->category=='This Year')

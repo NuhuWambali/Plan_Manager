@@ -180,6 +180,15 @@ class UserController extends Controller
         return $pdf->download('this_month_plans.pdf');
     }
 
+    public function downloadPlanThisYear(){
+        $Plans=Plan::Where([
+            'category'=>'This Year',
+        ])->get();
+        $userName=Auth::user()->name;
+        $pdf=PDF::loadView('Home.downloadThisYearPdf', compact('Plans','userName'));
+        $pdf->setPaper('A4','portrait');
+        return $pdf->download('this_year_plans.pdf');
+    }
 
 
 
