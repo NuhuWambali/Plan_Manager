@@ -53,9 +53,9 @@
             <tr>
 
                 <th>Task</th>
+                <th>Day</th>
                 <th>From</th>
                 <th>To</th>
-                <th>Day</th>
                 <th>Duration</th>
             </tr>
             </thead>

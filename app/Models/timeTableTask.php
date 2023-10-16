@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class timeTableTask extends Model
 {
     use HasFactory;
+
+
     protected $fillable=[
      'task',
      'day',
