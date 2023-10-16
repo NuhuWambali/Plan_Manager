@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\{Plan,timeTableTask};
-
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use PDF;
+
 
 class UserController extends Controller
 {
@@ -19,11 +20,9 @@ class UserController extends Controller
         return $plan['category'] == 'Today';
          })->count();
 
-
        $countThisWeek = $allPlans->filter(function ($plan) {
         return $plan['category'] == 'This Week';
          })->count();
-
 
         $countThisMonth = $allPlans->filter(function ($plan) {
             return $plan['category'] == 'This Month';
@@ -120,7 +119,7 @@ class UserController extends Controller
         Alert::success('Plan Deleted Successfully','');
         return redirect()->back();
         // ->with('message', 'Plan Deleted Successfully');
-        
+
     }
 
     public function planDone($id){
@@ -136,17 +135,27 @@ class UserController extends Controller
         return view('Home.editPlan', compact('plan'));
     }
 
-    public function confirmEdit(Request $request, $id){
-        $plan=Plan::find($id);
-        $user=Auth::user();
-        $plan->plan=$request->plan;
-        $plan->description=$request->description;
-        $plan->category=$request->category;
-        $plan->place=$request->place;
-        $plan->user_id=$user->id;
+    public function confirmEdit(Request $request, $id)
+    {
+        $plan = Plan::find($id);
+        $user = Auth::user();
+        $plan->plan = $request->plan;
+        $plan->description = $request->description;
+        $plan->category = $request->category;
+        $plan->place = $request->place;
+        $plan->user_id = $user->id;
         $plan->save();
-        Alert::success('Plan Edited Successfully','');
+        Alert::success('Plan Edited Successfully', '');
         return redirect()->back();
         // ->with('message','Plan Edited Successfully');
+    }
+
+    public function downloadPlan(){
+        $todayPlans=Plan::all();
+        $todayPlans->category='Today';
+        $userName=Auth::user()->name;
+        $pdf =  PDF::loadView('Home.downloadPdf',compact('todayPlans','userName'));
+        $pdf->setPaper('A4', 'portrait');
+        return $pdf->download('my_plans.pdf');
     }
 }

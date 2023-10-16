@@ -12,9 +12,11 @@
     <div class="col-10">
         <h2 class="titlealign">Plan for today</h2>
     </div>
+
     <div class="col-2">
-        <button class="btn btn-success">Download </button>
+        <a  href="{{route('downloadPlan')}}" class="btn btn-success">Download</a>
     </div>
+
 </div>
 
 @if($todayPlan->isNotEmpty())
@@ -35,12 +37,12 @@
                     <div class="containerPlan" style="background-color:rgb(8, 189, 27); opacity:0.7;">
                         <h3 style="text-decoration:line-through;color:#fff">{{$plan->plan}}</h3>
                         <h4 style="text-decoration:line-through;color:#fff">{{$plan->description}}</h4>
-                        <h5 class="desc" style="color:#fff">Category : {{$plan->category}}</h5>
+                        <h6 class="desc" style="color:#fff">Category : {{$plan->category}}</h6>
                         <h5 class="desc" style="color:#fff">Target Place : {{$plan->place}}</h5>
                         <h5 style="color:#fff">Status : {{$plan->status}}</h5>
                         <a class="btn btn-outline-warning disabled" style="margin:0 1em">Edit</a>
                         <a class="btn btn-success disabled" style="margin:0 1em" href="{{route('planDone', $plan->id)}}">Done</a>
-                        <a  onclick="confirmation(event)"   class="btn btn-danger " style="margin:0 1em " href="{{route('deletePlan', $plan->id)}}">Delete</a>
+                        <a  onclick="confirmation(event)"   class="btn btn-danger " style="margin:0 1em " href="{{route('deletePlan')}}">Delete</a>
                     </div>
                 @endif
             @endif

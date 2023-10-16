@@ -63,3 +63,5 @@ Route::get('/editPlanPage/{id}', [UserController::class, 'editPlanPage'])->name(
 
 Route::post('/confirmEdit/{id}', [UserController::class, 'confirmEdit'])->name('confirmEdit');
 
+Route::get('/downloadPlan', [UserController::class, 'downloadPlan'])->name('downloadPlan');
+
