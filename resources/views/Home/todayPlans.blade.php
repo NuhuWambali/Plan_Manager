@@ -38,7 +38,7 @@
                         <h5 class="desc" style="color:#fff">Category : {{$plan->category}}</h5>
                         <h5 class="desc" style="color:#fff">Target Place : {{$plan->place}}</h5>
                         <h5 style="color:#fff">Status : {{$plan->status}}</h5>
-                        <a class="btn btn-outline-warning disabled" style="margin:0 1em" ">Edit</a>
+                        <a class="btn btn-outline-warning disabled" style="margin:0 1em">Edit</a>
                         <a class="btn btn-success disabled" style="margin:0 1em" href="{{route('planDone', $plan->id)}}">Done</a>
                         <a  onclick="confirmation(event)"   class="btn btn-danger " style="margin:0 1em " href="{{route('deletePlan', $plan->id)}}">Delete</a>
                     </div>
